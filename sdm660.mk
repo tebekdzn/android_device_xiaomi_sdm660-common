@@ -278,6 +278,11 @@ PRODUCT_PACKAGES += \
     #vendor.lineage.livedisplay@2.0-service-sysfs
 
 # Media
+PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.1.vendor \
+    libavservices_minijail \
+    libavservices_minijail.vendor
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
