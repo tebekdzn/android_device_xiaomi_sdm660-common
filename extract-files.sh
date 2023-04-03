@@ -74,9 +74,7 @@ function blob_fixup() {
             sed -i 's|/product/framework/qcrilhook.jar|/system_ext/framework/qcrilhook.jar|g' "${2}"
             ;;
         system_ext/lib64/libdpmframework.so)
-            for LIBSHIM_DPMFRAMEWORK in $(grep -L "libshim_dpmframework.so" "${2}"); do
-                "${PATCHELF}" --add-needed "libshim_dpmframework.so" "$LIBSHIM_DPMFRAMEWORK"
-            done
+            "${PATCHELF}" --add-needed "libshim_dpmframework.so" "${2}"
             ;;
         vendor/bin/mlipayd@1.1)
            "${PATCHELF}" --remove-needed vendor.xiaomi.hardware.mtdservice@1.0.so "${2}"
@@ -84,6 +82,16 @@ function blob_fixup() {
         vendor/lib64/libmlipay.so | vendor/lib64/libmlipay@1.1.so)
             "${PATCHELF}" --remove-needed vendor.xiaomi.hardware.mtdservice@1.0.so "${2}"
             sed -i "s|/system/etc/firmware|/vendor/firmware\x0\x0\x0\x0|g" "${2}"
+            ;;
+        lib/libwfdaudioclient.so)
+            "${PATCHELF}" --set-soname "libwfdaudioclient.so" "${2}"
+            ;;
+        lib/libwfdmediautils.so)
+            "${PATCHELF}" --set-soname "libwfdmediautils.so" "${2}"
+            ;;
+        lib/libwfdmmsink.so)
+            "${PATCHELF}" --add-needed "libwfdaudioclient.so" "${2}"
+            "${PATCHELF}" --add-needed "libwfdmediautils.so" "${2}"
             ;;
     esac
 }

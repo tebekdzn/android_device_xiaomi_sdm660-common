@@ -4,7 +4,7 @@ ro.bluetooth.a2dp_offload.supported=true
 vendor.audio.feature.a2dp_offload.enable=true
 
 # Bluetooth
-persist.vendor.bt.a2dp.aac_whitelist=false
+persist.vendor.bt.a2dp.aac_whitelist=false 
 persist.vendor.qcom.bluetooth.enable.splita2dp=true
 persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac-ldac
 ro.bluetooth.library_name=libbluetooth_qti.so
@@ -21,3 +21,6 @@ DEVICE_PROVISIONED=1
 persist.sys.fflag.override.settings_network_and_internet_v2=true
 ril.subscription.types=NV,RUIM
 telephony.lteOnCdmaDevice=1
+
+# WFD
+persist.debug.wfd.enable=1
