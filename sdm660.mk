@@ -7,6 +7,9 @@
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
+    hardware/google/interfaces \
+    hardware/google/pixel
+
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
@@ -345,7 +348,6 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.secure_element@1.0 \
     rild \
     librmnetctl \
     libprotobuf-cpp-full
